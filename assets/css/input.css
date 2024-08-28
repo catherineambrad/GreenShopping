@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.current_page_item {
+    font-weight: 700;
+    position: relative;
+}
+
+.current_page_item::after {
+    content: '';
+    position: absolute;
+    border-bottom: 3px solid #46A358;
+    bottom: -22px;
+    width: 100%;
+    left: 0;
+}
