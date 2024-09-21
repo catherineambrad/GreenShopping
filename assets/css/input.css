@@ -1,7 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+h2 {
+    font-family: "Cera Pro", sans-serif;
+}
 
+.site {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 100vh;
+}
 
 .current_page_item {
     font-weight: 700;
@@ -14,5 +24,176 @@
     border-bottom: 3px solid #46A358;
     bottom: -22px;
     width: 100%;
+    left: 0;
+}
+
+.footer {
+    background: #FBFBFB;
+}
+
+.footer_join_newsletters {
+    max-width: 354px;
+}
+
+.footer-information {
+    background: rgba(70, 163, 88, 0.10);
+}
+
+.footer-information a {
+    max-width: 200px;
+}
+
+.footer_social_media-list a {
+    width: 30px;
+    height: 30px;
+}
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.hero-slide-item {
+    background: linear-gradient(98deg, rgba(245, 245, 245, 0.50) -23.46%, rgba(245, 245, 245, 0.50) 107.51%);
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.hero-slide-item--subtitle {
+    letter-spacing: 1.4px;
+    font-family: "Cera Pro", sans-serif;
+}
+
+.hero-slide-item--title {
+    font-size: 70px;
+    line-height: 70px;
+}
+
+.hero-slide-item--title span {
+    color: #46A358;
+}
+
+.hero-slide-item--description {
+    color: #727272;
+    line-height: 24px;
+}
+
+.hero-slide-item--button {
+    width: fit-content;
+}
+
+.hero-slide-item--img {
+    max-width: 745px;
+}
+
+.hero-slide-item--wrapp {
+    max-width: 575px;
+}
+
+.swiper-wrapper {
+    background: linear-gradient(98deg, rgba(245, 245, 245, 0.50) -23.46%, rgba(245, 245, 245, 0.50) 107.51%);
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1 !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: #46A358 !important;
+}
+
+.page-single--title {
+    font-size: 65px;
+}
+
+.page-single img {
+    margin: 20px auto;
+}
+
+.last-posts-list--item {
+    background: #FBFBFB;
+}
+
+.last-posts-list--item-wrap {
+    color: #46A358;
+    line-height: 16px;
+    font-family: "Cera Pro", sans-serif;
+}
+
+.last-posts-list--item-title {
+    font-family: "Cera Pro", sans-serif;
+}
+
+.last-posts-list--item img {
+    width: 100%;
+}
+
+.last-posts-list--item-link {
+    width: fit-content;
+}
+
+.last-posts-list--item-descr p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 49px;
+    -webkit-line-clamp: 2;
+}
+
+.last-posts-title {
+    font-size: 30px;
+}
+
+.last-posts-list--item img {
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.additional-information {
+    margin: 150px auto 100px auto;
+}
+
+.additional-information--button {
+    width: fit-content;
+    margin-left: auto;
+}
+
+.additional-information--description {
+    width: 292px;
+}
+
+.additional-information--list-img {
+    margin-top: -45px;
+    margin-left: 16px;
+}
+
+.additional-information--item {
+    background: #FBFBFB;
+    position: relative;
+}
+
+.additional-information--item:after {
+    position: absolute;
+    content: url("../image/decor.png");
+    bottom: 0;
     left: 0;
 }
