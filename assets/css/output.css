@@ -799,6 +799,10 @@ video {
   gap: 1rem;
 }
 
+.gap-7 {
+  gap: 1.75rem;
+}
+
 .gap-8 {
   gap: 2rem;
 }
@@ -1109,6 +1113,10 @@ video {
   outline-style: solid;
 }
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 h2 {
   font-family: "Cera Pro", sans-serif;
 }
@@ -1130,7 +1138,7 @@ h2 {
   content: '';
   position: absolute;
   border-bottom: 3px solid #46A358;
-  bottom: -22px;
+  bottom: -25px;
   width: 100%;
   left: 0;
 }
@@ -1307,4 +1315,30 @@ h2 {
   content: url("../image/decor.png");
   bottom: 0;
   left: 0;
+}
+
+/*Woocomerce*/
+
+.cart-count {
+  color: #FFF;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 14px;
+  height: 14px;
+  background: #46A358;
+  border-radius: 50%;
+  padding: 1px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: -4px;
+  border: 2px solid #fff;
+}
+
+.header-cart-link {
+  position: relative;
 }

@@ -194,4 +194,8 @@ function register_footer_menu()
 
 add_action('init', 'register_footer_menu');
 
+//add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
+if ( class_exists( 'WooCommerce' ) ) {
+    require get_template_directory() . '/inc/woocommerce.php';
+}
