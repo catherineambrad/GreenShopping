@@ -10,6 +10,7 @@
 
 require_once "acf-setup/acf-init.php";
 require_once "acf-setup/acf-save-fields.php";
+require_once "inc/activate-plugins.php";
 
 define("CSS_DIR", get_template_directory_uri() . '/assets/css');
 define('JS_DIR', get_template_directory_uri() . '/assets/js');
