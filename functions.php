@@ -160,15 +160,20 @@ function greenshop_scripts()
 
     wp_enqueue_script('greenshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
-
     wp_enqueue_style('greenshop-swiper-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), _S_VERSION);
     wp_enqueue_script('greenshop-swiper-script', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), _S_VERSION, true);
     wp_enqueue_script('greenshop-swiper-slide', get_template_directory_uri() . '/assets/js/swiper-hero-slide.js', array('greenshop-swiper-script'), _S_VERSION, true);
+
+    // ✅ Исправленный путь
+    wp_enqueue_script('greenshop-script', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
 }
+
+add_action('wp_enqueue_scripts', 'greenshop_scripts');
+
 
 add_action('wp_enqueue_scripts', 'greenshop_scripts');
 
@@ -197,6 +202,109 @@ add_action('init', 'register_footer_menu');
 
 //add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
-if ( class_exists( 'WooCommerce' ) ) {
+function add_woocommerce_support()
+{
+    add_theme_support('woocommerce');
+}
+
+add_action('after_setup_theme', 'add_woocommerce_support');
+
+
+if (class_exists('WooCommerce')) {
     require get_template_directory() . '/inc/woocommerce.php';
 }
+
+add_filter('woocommerce_enqueue_styles', '__return_empty_array');
+
+
+//function add_custom_class_to_cart_block($block_content, $block)
+//{
+//    if ($block['blockName'] === 'woocommerce/cart') {
+//        $block_content = str_replace('wp-block-woocommerce-cart', 'wp-block-woocommerce-cart alignwide container', $block_content);
+//    }
+//    return $block_content;
+//}
+
+
+//function custom_woocommerce_template($template, $template_name, $template_path)
+//{
+//    $custom_template = get_stylesheet_directory() . '/woocommerce/' . $template_name;
+//
+//    if (file_exists($custom_template)) {
+//        $template = $custom_template;
+//    }
+//
+//    return $template;
+//}
+
+
+//function filter_products() {
+//    $filter = $_POST['filter'];
+//    $args = array(
+//        'post_type' => 'product',
+//        'posts_per_page' => 10,
+//        'tax_query' => array(
+//            array(
+//                'taxonomy' => 'product_cat',
+//                'field' => 'slug',
+//                'terms' => $filter,
+//            ),
+//        ),
+//    );
+//
+//    $query = new WP_Query($args);
+//    if ($query->have_posts()) :
+//        while ($query->have_posts()) : $query->the_post();
+//            wc_get_template_part('content', 'product');
+//        endwhile;
+//    else :
+//        echo '<p>Товары не найдены</p>';
+//    endif;
+//
+//    wp_die();
+//}
+//add_action('wp_ajax_filter_products', 'filter_products');
+//add_action('wp_ajax_nopriv_filter_products', 'filter_products');
+//
+//
+
+// Получаем стек вызовов
+//$backtrace = debug_backtrace();
+//
+//// Перебираем стек вызовов и выводим пути к файлам
+//foreach ($backtrace as $index => $trace) {
+//    echo "Шаг {$index}: Загружен файл: " . $trace['file'] . "<br>";
+//}
+//
+//
+//add_filter( 'wc_get_template_part', 'show_woocommerce_template_part', 10, 3 );
+//
+//function show_woocommerce_template_part( $template, $slug, $name ) {
+//    // Выводим путь к загружаемому шаблону
+//    echo 'Загружается шаблон: ' . $template . '<br>';
+//
+//    return $template;
+//}
+
+
+// Создание новой категории
+function create_blog_category()
+{
+    $category_name = 'Blog'; // Название категории
+    $category_slug = 'blog'; // ЧПУ (slug) категории
+
+// Проверяем, существует ли категория с таким названием
+    if (!term_exists($category_name, 'category')) {
+// Если категория не существует, создаем ее
+        wp_insert_term(
+            $category_name, // Название категории
+            'category', // Таксономия (категория)
+            array(
+                'slug' => $category_slug // ЧПУ категории
+            )
+        );
+    }
+}
+
+// Вызываем функцию при активации темы или плагина
+add_action('after_setup_theme', 'create_blog_category');
